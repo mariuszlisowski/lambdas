@@ -5,6 +5,14 @@
 #include <thread>
 #include <string>
 
+/* generic function */
+template<typename FUNCTION, typename DURATION, typename... ARGS>
+void schedule(FUNCTION function, DURATION time, ARGS... args) {
+    std::this_thread::sleep_for(time);
+    function(args...);
+}
+
+/* overloaded functions */
 void schedule(std::function<void()> func,
               std::chrono::seconds secs)
 {
