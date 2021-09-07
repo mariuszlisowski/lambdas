@@ -1,7 +1,6 @@
-#include <chrono>
 #include <iomanip>
 #include <iostream>
-#include <string>
+
 #include "schedule.hpp"
 
 // Napisz funkcję schedule(), która przyjmuje dwa parametry:
@@ -18,7 +17,7 @@ int main() {
     using namespace std::chrono_literals;
 
     auto start = std::chrono::system_clock::now();
-    schedule([]{ std::cout << "I'm an empty function\n"; }, 1s);
+    schedule([]{ std::cout << "I'm an empty function" << std::endl; }, 1s);
     schedule([](int a){ std::cout << "Param int a = " << a << '\n'; }, 2s, 42);
     schedule([](std::string s, double d){ std::cout << "Params: string s = " << s << ", double d = " << d << '\n'; }, 0s, "text", 42.5);
     auto stop = std::chrono::system_clock::now();
