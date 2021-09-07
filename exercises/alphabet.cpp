@@ -6,10 +6,20 @@
 #include <iostream>
 
 int main() {
+    auto alphabet = [letter{ 'a' }]() mutable {
+        if (letter > 'z') {
+            letter = 'A';
+        } else if (letter > 'Z' && letter < 'a') {
+            letter = 'a';
+        }
+
+        return letter++;
+    };
 
     for (int i = 0; i < 100; ++i) {
-        // std::cout << alphabet();
+        std::cout << alphabet();
     }
+    
     std::cout << '\n';
     return 0;
 }
