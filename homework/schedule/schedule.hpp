@@ -7,9 +7,9 @@
 
 /* generic function */
 template<typename FUNCTION, typename DURATION, typename... ARGS>
-void schedule(FUNCTION function, DURATION time, ARGS... args) {
+void schedule(FUNCTION function, DURATION time, ARGS&&... args) {
     std::this_thread::sleep_for(time);
-    function(args...);
+    function(std::forward<ARGS>(args)...);
 }
 
 /* overloaded functions */
